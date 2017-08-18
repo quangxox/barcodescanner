@@ -86,6 +86,7 @@ public class ZXingScannerView extends BarcodeScannerView {
     private void initMultiFormatReader() {
         Map<DecodeHintType,Object> hints = new EnumMap<>(DecodeHintType.class);
         hints.put(DecodeHintType.POSSIBLE_FORMATS, getFormats());
+        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
         mMultiFormatReader = new MultiFormatReader();
         mMultiFormatReader.setHints(hints);
     }

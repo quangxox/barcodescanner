@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -18,6 +22,10 @@ public class SimpleScannerFragment extends Fragment implements ZXingScannerView.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mScannerView = new ZXingScannerView(getActivity());
+        mScannerView.setAutoFocus(true);
+        List<BarcodeFormat> barcodeFormatList = new ArrayList<>();
+        barcodeFormatList.add(BarcodeFormat.QR_CODE);
+        mScannerView.setFormats(barcodeFormatList);
         return mScannerView;
     }
 
